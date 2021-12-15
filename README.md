@@ -1,5 +1,5 @@
 # git-check - Orri Nehamkin
-git@github.com:nehamkin/git-check.git
+https://github.com/nehamkin/git-check.git
 
 After following the set-up of this project, you will have a terminal command call git-check.
 git-check gets a repositories url and returns a shallow saftey analysis of the repository.
