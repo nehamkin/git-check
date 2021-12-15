@@ -1,4 +1,5 @@
 # git-check - Orri Nehamkin
+git@github.com:nehamkin/git-check.git
 
 After following the set-up of this project, you will have a terminal command call git-check.
 git-check gets a repositories url and returns a shallow saftey analysis of the repository.
@@ -7,6 +8,9 @@ git-check gets a repositories url and returns a shallow saftey analysis of the r
 
 ![git-check good example](https://user-images.githubusercontent.com/73988005/146244405-863c04df-6c5e-4bc0-8b7d-849424719145.PNG)
 
+# Usage
+1. open terminal
+2. run - git-check <repository-url>
 
 # Set up
 1. clone the repointo desired location
