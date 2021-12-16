@@ -1,5 +1,28 @@
 {
-  "dependencies": {
-    "@octokit/rest": "^18.12.0"
+ 
+  "name": "topicsofnetworksecurity",
+  "description": "",
+  "version": "1.0.0",
+  "main": "git-check.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nehamkin/git-check.git"
+  },
+  "author": "Orri Nehamkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nehamkin/git-check/issues"
+  },
+  "homepage": "https://github.com/nehamkin/git-check#readme"
+  , "dependencies": {
+    "@octokit/rest": "^18.12.0",
+    "puppeteer": "^13.0.0"
+  },
+  "bin": {
+    "git-check" : "git-check"
   }
 }
