@@ -34,10 +34,16 @@ const timeDifferenceInDays = (strDate) => {
 
 const repoUrl = argv[2];
 if (repoUrl === undefined) console.log("you must enter a github repository");
+var owner, repo
+var invalid_repo = false;
 
 const strArr = repoUrl.split("/");
-const owner = strArr[3];
-const repo = strArr[4].substring(0, strArr[4].length - 4);
+try{
+  owner = strArr[3];
+  repo = strArr[4].substring(0, strArr[4].length - 4);
+} catch {
+  invalid_repo = true;
+}
 const ownerAndrepo = {
   owner: owner,
   repo: repo,
@@ -185,34 +191,39 @@ async function printLanguagesUsed() {
 }
 
 async function summary() {
-  await printCommits();
-  await printMetrics();
-  await printLanguagesUsed();
-  await printContributors();
-  await printNumberOfUsers();
-  if (
-    partialInformation < 2 &&
-    maintained &&
-    langLowLevel &&
-    manyUsers &&
-    healthy
-  )
-    console.log(green, "\nThe repo seems to be safe to clone");
-  else
-    console.log(
-      red,
-      `    ---------Summary----------\n${
-        partialInformation <= 1
-          ? ""
-          : `Could not get ${partialInformation} attributes\n`
-      }${maintained ? "" : "The repo may not be maintained\n"}${
-        langLowLevel
-          ? ""
-          : "The repo uses low-level languages that may try to hack your system\n"
-      }${manyUsers ? "" : "The repo does not have many users\n"}${
-        healthy ? "" : "The repo did not get a good health score from github\n"
-      }Continue With Caution!`
-    );
+  try{
+    await printCommits();
+    await printMetrics();
+    await printLanguagesUsed();
+    await printContributors();
+    await printNumberOfUsers();
+    if (
+      partialInformation < 2 &&
+      maintained &&
+      langLowLevel &&
+      manyUsers &&
+      healthy
+    )
+      console.log(green, "\nThe repo seems to be safe to clone");
+    else
+      console.log(
+        red,
+        `    ---------Summary----------\n${
+          partialInformation <= 1
+            ? ""
+            : `Could not get ${partialInformation} attributes\n`
+        }${maintained ? "" : "The repo may not be maintained\n"}${
+          langLowLevel
+            ? ""
+            : "The repo uses low-level languages that may try to hack your system\n"
+        }${manyUsers ? "" : "The repo does not have many users\n"}${
+          healthy ? "" : "The repo did not get a good health score from github\n"
+        }Continue With Caution!`
+      );
+  }
+  catch{
+    invalid_repo ? console.log(red, 'The url to the repo is invalid please check') : console.log(red, 'An error occured please check that you enterd a proper url to a repo')
+  }
 }
 
 // summary();
